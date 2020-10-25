@@ -21,7 +21,7 @@ The link to my open source code used as basis for this project is https://github
 3. Frontend using React and redux
 4. Hosting to Heroku
 
-							## Part 1
+## Part 1
 
 **MongoDB Atlas Setup**
 MongoDOB is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
@@ -37,10 +37,10 @@ MongoDOB is a noSQL database such as structure type and its very similar to JS s
    - click on "use and write to any database" for your user privileges. 
    - The next thing to do is to whitelist your IP address. click on the "ADD IP ADDREES" at the top right corner.
    - we are going to be using Mongoose which is a package installed with MPM.
-..................................................................................................................
 
 
-							## Part 2
+
+## Part 2
 **Install Dependencies and and Basic Express Setup**
 
 create a folder on your desktop and name it teamworkUniAbuja
@@ -50,14 +50,14 @@ bring up the terminal by pressing Cntrl + `
 
 
 **Create a new file called .gitignore**
-....................................
+
 ```
 node_modules/
 
   - Build our express server in API
 Terminal
 ```
-.................................
+
 -npm init
 -description: Social network for developers in the University of Abuja
 -entry point: (index.jx) server.js
@@ -109,13 +109,13 @@ git commit -m 'initial commit'
 
 
 Connecting to MongoDb with Mongoose
-    - Login to your MongoDB Atlas
-   - Click on connect, connect your application and copy the strings in "connection string only"
-   - Go back to your Vscode
-   - Create a folder name 'config'
-   - In the config, create a file called 'default.json'
+- Login to your MongoDB Atlas
+- Click on connect, connect your application and copy the strings in "connection string only"
+- Go back to your Vscode
+- Create a folder name 'config'
+- In the config, create a file called 'default.json'
 In our default.json
-..........................
+
 {
   "mongoURI": "paste the string you copied fro MongoDB Atlas website and replace the password with the one you created"
 
