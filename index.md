@@ -1,3 +1,4 @@
+# TeamworkUniAbuja
 This is a react nodejs application for connecting developers in University of abuja to allow work in situations like covid era
 
 The purpose of this app is to help developers in the University of Abuja Nigeria to connect. It is social Network app for developers in the University of Abuja to Connect
@@ -8,21 +9,21 @@ The link to the facebook open source code used as basis for this project is http
 The link to my open source code used as basis for this project is https://github.com/austainodedon/TeamworkUniAbuja
 
 
-Technologis used
+## Technologis used
 
 1. Nodejs Express Backend
 2. React Redux frontend
 3. MongoDB Database 
 
-Procedure
+## Procedure
 1. MongoDB Atlas set up
 2. Backend using Nodejs Express
 3. Frontend using React and redux
 4. Hosting to Heroku
-..........................................................................................................................................
-							Part 1
 
-MongoDB Atlas Setup
+## Part 1
+
+**MongoDB Atlas Setup**
 MongoDOB is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
 - Installation of MongoDB
    - There are several ways to locally installed MongoDB or in the cloud using MongoDB Atlas. MongoBD Atlas is preferably used because it's easier to managed.
@@ -36,11 +37,11 @@ MongoDOB is a noSQL database such as structure type and its very similar to JS s
    - click on "use and write to any database" for your user privileges. 
    - The next thing to do is to whitelist your IP address. click on the "ADD IP ADDREES" at the top right corner.
    - we are going to be using Mongoose which is a package installed with MPM.
-..................................................................................................................
 
 
-							Part 2
-Install Dependencies and and Basic Express Setup
+
+## Part 2
+**Install Dependencies and and Basic Express Setup**
 
 create a folder on your desktop and name it teamworkUniAbuja
 open up the folder in Visual Studio Code
@@ -48,63 +49,73 @@ open up the folder in Visual Studio Code
 bring up the terminal by pressing Cntrl + `
 
 
- - Create a new file called .gitignore
-....................................
+**Create a new file called .gitignore**
+
+```
 node_modules/
 
   - Build our express server in API
 Terminal
-.................................
-npm init
-description: Social network for developers in the University of Abuja
-entry point: (index.jx) server.js
-test command:
-git repository: 
-keywords:
-author: Augustine Ekene Emeka
-license: (ISC) "MIT"
+```
+
+-npm init
+-description: Social network for developers in the University of Abuja
+-entry point: (index.jx) server.js
+-test command:
+-git repository: 
+-keywords:
+-author: Augustine Ekene Emeka
+-license: (ISC) "MIT"
 
    - Install our Dependencies
 at the Terminal run the command
 .................................................
+```
 npm i express express-validator bcryptjs config gravator jsonwebtoken
 mongoose request
+```
 
 ..................................................
+```
 npm i -D nodemon concurrently
+```
 
 We need to have an entry file
    _ Create a new file named server.js
 ....................................................
+```
 const express = require ('express');
 const app = express();
 app.get('/' (req, res) => res.send('API Running'));
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+```
 
 Let's test with...
 .........................
 node server.js
 
-  _Go to postman to run the server
-  - Type http://localhost:5000
+  -Go to postman to run the server
+  -Type http://localhost:5000
 
-   - To stop the running server
+   -To stop the running server
 Terminal
 ..............................
+```
 git add.
 git commit -m 'initial commit'
+```
 
 
 
 Connecting to MongoDb with Mongoose
-    - Login to your MongoDB Atlas
-   - Click on connect, connect your application and copy the strings in "connection string only"
-   - Go back to your Vscode
-   - Create a folder name 'config'
-   - In the config, create a file called 'default.json'
+- Login to your MongoDB Atlas
+- Click on connect, connect your application and copy the strings in "connection string only"
+- Go back to your Vscode
+- Create a folder name 'config'
+- In the config, create a file called 'default.json'
 In our default.json
-..........................
+
 {
   "mongoURI": "paste the string you copied fro MongoDB Atlas website and replace the password with the one you created"
 
@@ -112,6 +123,7 @@ In our default.json
 
     - Under config, create another file called db.js
 .....................................................
+```
 cont mongoose = require('mongoose');
 config = require('config');
 const db = config.get('mongoURI');
@@ -127,9 +139,9 @@ console.log('MongoDB conected...');
   }
 };
 module.exports = connectDB; 
-
+```
   -Go to your server.js and write
-.........................................
+```
 const express = require ('express');
 const connectDB = require('./config/db');
 const app = express();
@@ -138,6 +150,7 @@ connectDB();
 app.get('/' (req, res) => res.send('API Running'));
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+```
 
   - let's run it
 Termial
@@ -146,15 +159,16 @@ npm run server
 
 
 
-ROUTE FILES WITH EXPRESS ROUTER
-Create a folder in thr root called Routes
-create another folder within the routes called Api
-Within the Api folder, create files called users.js, auth.js, profile.js and post.js
-Go to the postman to check and run your code
-Separates your resources within postman by creating a new collections----- user & auth, posts and profiles
+**ROUTE FILES WITH EXPRESS ROUTER**
+-Create a folder in thr root called Routes
+-create another folder within the routes called Api
+-Within the Api folder, create files called users.js, auth.js, profile.js and post.js
+-Go to the postman to check and run your code
+-Separates your resources within postman by creating a new collections----- user & auth, posts and profiles
 
 users.js
 ....................................
+```
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
@@ -241,9 +255,13 @@ router.post(
 );
 
 module.exports = router;
+```
+
+
 
 auth.js
 ....................................
+```
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -324,10 +342,11 @@ router.post(
 );
 
 module.exports = router;
-
+```
 
 posts.js
 ......................................
+```
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
@@ -549,6 +568,7 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 });
 
 module.exports = router;
+```
 
 profile.js
 ........................
@@ -950,7 +970,7 @@ Then paste the token under VALUE
 Then save it under User&auth folder as Get auth user
 
 auth.js
-...................................................................................
+```
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -978,20 +998,21 @@ module.exports = function (req, res, next) {
     res.status(500).json({ msg: 'Server Error' });
   }
 };
-.........................................................................................................................................
+```
 
 
-								Part 3
+								## Part 3
 
 
-React and Concurrent Setup
+**React and Concurrent Setup**
 
 at the Terminal and at the root directory in order to create the frontend react app, run the command
-----------------------------
+```
 npx create-react-app client
+```
 
 Package.json
----------------------------
+```
 {
   "name": "TeamworkUniAbuja",
   "version": "1.0.0",
@@ -1022,7 +1043,7 @@ Package.json
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
   }
-
+```
 to check if it is working, at the Terminal run the command
 ----------------
 npm run dev
@@ -4088,10 +4109,10 @@ const setAuthToken = token => {
 
 export default setAuthToken;
 
-.................................................................................................................
-Part 4
 
-Deploy to heroku
+## Part 4
+
+**Deploy to heroku**
 
 In case you don’t have a Heroku account already, create one.
 Again, if you don’t have this already, install heroku-cli.
