@@ -1,3 +1,4 @@
+#TeamworkUniAbuja
 This is a react nodejs application for connecting developers in University of abuja to allow work in situations like covid era
 
 The purpose of this app is to help developers in the University of Abuja Nigeria to connect. It is social Network app for developers in the University of Abuja to Connect
@@ -19,7 +20,7 @@ The link to my open source code used as basis for this project is https://github
 2. Backend using Nodejs Express
 3. Frontend using React and redux
 4. Hosting to Heroku
-..........................................................................................................................................
+
 							##Part 1
 
 **MongoDB Atlas Setup**
@@ -4107,7 +4108,7 @@ const setAuthToken = token => {
 
 export default setAuthToken;
 
-.................................................................................................................
+
 ##Part 4
 
 **Deploy to heroku**
