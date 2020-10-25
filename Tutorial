@@ -4091,6 +4091,19 @@ Part 4
 
 Deploy to heroku
 
+In case you don’t have a Heroku account already, create one.
+Again, if you don’t have this already, install heroku-cli.
+Go to your terminal, and log in to Heroku by running heroku login and entering your credentials when prompted.
+Create your Heroku application by running the following command in the terminal (and, of course, replacing my-app with the name of your own app).
+heroku create my-app
+At this point, you should have two Git remotes for your app: the original one and the one that was created by Heroku. In order to check this, just run git remote.
+When Heroku starts your application, it is going to try to run the start script in your package.json. Therefore, this script should be changed to:
+"start": "node server/server.js"
+Push your code to the Heroku remote repository.
+git push heroku master
+And that’s it! Your React app should now be deployed to Heroku!
+You can open it directly from the terminal by running heroku open.
+
 
 
 
