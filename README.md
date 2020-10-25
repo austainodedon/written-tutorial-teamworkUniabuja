@@ -1,4 +1,4 @@
-#TeamworkUniAbuja#
+# TeamworkUniAbuja
 This is a react nodejs application for connecting developers in University of abuja to allow work in situations like covid era
 
 The purpose of this app is to help developers in the University of Abuja Nigeria to connect. It is social Network app for developers in the University of Abuja to Connect
@@ -9,19 +9,19 @@ The link to the facebook open source code used as basis for this project is http
 The link to my open source code used as basis for this project is https://github.com/austainodedon/TeamworkUniAbuja
 
 
-##Technologis used
+## Technologis used
 
 1. Nodejs Express Backend
 2. React Redux frontend
 3. MongoDB Database 
 
-##Procedure
+## Procedure
 1. MongoDB Atlas set up
 2. Backend using Nodejs Express
 3. Frontend using React and redux
 4. Hosting to Heroku
 
-							##Part 1
+							## Part 1
 
 **MongoDB Atlas Setup**
 MongoDOB is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
@@ -40,7 +40,7 @@ MongoDOB is a noSQL database such as structure type and its very similar to JS s
 ..................................................................................................................
 
 
-							##Part 2
+							## Part 2
 **Install Dependencies and and Basic Express Setup**
 
 create a folder on your desktop and name it teamworkUniAbuja
@@ -139,9 +139,9 @@ console.log('MongoDB conected...');
   }
 };
 module.exports = connectDB; 
-
+```
   -Go to your server.js and write
-.........................................
+```
 const express = require ('express');
 const connectDB = require('./config/db');
 const app = express();
@@ -970,7 +970,7 @@ Then paste the token under VALUE
 Then save it under User&auth folder as Get auth user
 
 auth.js
-...................................................................................
+```
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -998,20 +998,21 @@ module.exports = function (req, res, next) {
     res.status(500).json({ msg: 'Server Error' });
   }
 };
-.........................................................................................................................................
+```
 
 
-								##Part 3
+								## Part 3
 
 
-React and Concurrent Setup
+**React and Concurrent Setup**
 
 at the Terminal and at the root directory in order to create the frontend react app, run the command
-----------------------------
+```
 npx create-react-app client
+```
 
 Package.json
----------------------------
+```
 {
   "name": "TeamworkUniAbuja",
   "version": "1.0.0",
@@ -1042,7 +1043,7 @@ Package.json
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
   }
-
+```
 to check if it is working, at the Terminal run the command
 ----------------
 npm run dev
@@ -4109,7 +4110,7 @@ const setAuthToken = token => {
 export default setAuthToken;
 
 
-##Part 4
+## Part 4
 
 **Deploy to heroku**
 
