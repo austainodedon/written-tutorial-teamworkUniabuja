@@ -58,14 +58,14 @@ node_modules/
 Terminal
 ```
 
--npm init
--description: Social network for developers in the University of Abuja
--entry point: (index.jx) server.js
--test command:
--git repository: 
--keywords:
--author: Augustine Ekene Emeka
--license: (ISC) "MIT"
+- npm init
+- description: Social network for developers in the University of Abuja
+- entry point: (index.jx) server.js
+- test command:
+- git repository: 
+- keywords:
+- author: Augustine Ekene Emeka
+- license: (ISC) "MIT"
 
    - Install our Dependencies
 at the Terminal run the command
