@@ -20,7 +20,7 @@ Procedure
 2. Backend using Nodejs Express
 3. Frontend using React and redux
 4. Hosting to Heroku
-..........................................................................................................................................
+.......................................................................................................
 							Part 1
 
 MongoDB Atlas Setup
@@ -37,7 +37,7 @@ MongoDOB is a noSQL database such as structure type and its very similar to JS s
    - click on "use and write to any database" for your user privileges. 
    - The next thing to do is to whitelist your IP address. click on the "ADD IP ADDREES" at the top right corner.
    - we are going to be using Mongoose which is a package installed with MPM.
-..................................................................................................................
+.............................................................................................
 
 
 							Part 2
