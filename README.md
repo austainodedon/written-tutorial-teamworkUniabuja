@@ -166,8 +166,8 @@ npm run server
 -Go to the postman to check and run your code
 -Separates your resources within postman by creating a new collections----- user & auth, posts and profiles
 
-users.js
-....................................
+**users.js**
+```
 ```
 const express = require('express');
 const router = express.Router();
@@ -259,8 +259,8 @@ module.exports = router;
 
 
 
-auth.js
-....................................
+**auth.js**
+```
 ```
 const express = require('express');
 const router = express.Router();
@@ -344,8 +344,8 @@ router.post(
 module.exports = router;
 ```
 
-posts.js
-......................................
+**posts.js**
+```
 ```
 const express = require('express');
 const router = express.Router();
@@ -570,8 +570,9 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 module.exports = router;
 ```
 
-profile.js
-........................
+**profile.js**
+```
+```
 const express = require('express');
 const axios = require('axios');
 const config = require('config');
@@ -911,8 +912,9 @@ Create a new folder in the root called models
 Create a new file within the model called User.js
 Create a schema
 
-User.js
-..................................................................................
+**User.js**
+```
+```
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -969,7 +971,8 @@ Click on the header and type x-auth.token
 Then paste the token under VALUE
 Then save it under User&auth folder as Get auth user
 
-auth.js
+**auth.js**
+```
 ```
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -1089,8 +1092,9 @@ CLEAN UP AND INITIAL COMPONENT
    - Go to index.html, Copy the section with the class Landing and paste it in landing.js
    
 
-App.js
-............................
+**App.js**
+```
+```
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
@@ -1161,8 +1165,9 @@ Index.html
   </body>
 </html>
 
-Navbar.js
-........................
+**Navbar.js**
+```
+```
 import React from 'react';
 
 const Navbar = () =>
@@ -1182,8 +1187,9 @@ const Navbar = () =>
 
 export default Navbar
 
-Landing.js
-........................
+**Landing.js**
+```
+```
 import React, { Fragment } from 'react';
 import Navbar from './components/layout/Navbar';
 import Landing from './component/layout/landing';
@@ -1201,8 +1207,8 @@ export default app;
 
 CODES IN CLIENT'S FOLDER
 
-manifest.json
-..........................{
+**manifest.json**
+```{
   "short_name": "React App",
   "name": "Create React App Sample",
   "icons": [
@@ -1218,8 +1224,8 @@ manifest.json
   "background_color": "#ffffff"
 }
 
-index.html
-............................
+**index.html**
+```
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1242,8 +1248,9 @@ index.html
   </body>
 </html>
 
-Alert.js
-............................
+**Alert.js**
+```
+```
 import { v4 as uuidv4 } from 'uuid';
 import { SET_ALERT, REMOVE_ALERT } from './types';
 
@@ -1257,8 +1264,9 @@ export const setAlert = (msg, alertType, timeout = 5000) => dispatch => {
   setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeout);
 };
 
-auth.js
-..............................
+**auth.js**
+```
+```
 import api from '../utils/api';
 import { setAlert } from './alert';
 import {
@@ -1340,8 +1348,9 @@ export const login = (email, password) => async dispatch => {
 export const logout = () => ({ type: LOGOUT });
 
 
-post.js
-...................................
+**post.js**
+```
+```
 import api from '../utils/api';
 import { setAlert } from './alert';
 import {
@@ -1500,8 +1509,9 @@ export const deleteComment = (postId, commentId) => async dispatch => {
 };
 
 
-profile.js
-..............................
+**profile.js**
+```
+```
 import api from '../utils/api';
 import { setAlert } from './alert';
 
@@ -1730,8 +1740,9 @@ export const deleteAccount = () => async dispatch => {
 };
 
 
-Types.js
-.........................................
+**Types.js**
+```
+```
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -1758,8 +1769,9 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
-Login.js
-..................................................
+**Login.js**
+```
+```
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -1834,8 +1846,8 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, { login })(Login);
 
 
-Register.js
-....................................
+**Register.js**
+```
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
@@ -1938,8 +1950,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { setAlert, register })(Register);
 
 
-Dashboard.js
-.....................................
+**Dashboard.js**
+```
+```
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -2006,8 +2019,9 @@ export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
 );
 
 
-DashboardActions.js
-..........................
+**DashboardActions.js**
+```
+```
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -2069,8 +2083,9 @@ export default connect(
 
 
 
-Education.js
-................................
+**Education.js**
+```
+```
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -2131,8 +2146,9 @@ export default connect(
 )(Education);
 
 
-Experience.js
-.....................................
+**Experience.js**
+```
+```
   
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
@@ -2194,8 +2210,9 @@ export default connect(
 )(Experience);
 
 
-Alert.js
-........................
+**Alert.js**
+```
+```
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -2217,8 +2234,9 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps)(Alert);
 
-Landing.js
-.....................................
+**Landing.js**
+```
+```
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -2263,8 +2281,9 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(Landing);
 
 
-Navbar.js
-.........................................
+**Navbar.js**
+```
+```
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -2333,8 +2352,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { logout })(Navbar);
 
 
-NotFound.js
-.................................
+**NotFound.js**
+```
+```
 import React, { Fragment } from 'react';
 
 const NotFound = () => {
@@ -2351,8 +2371,9 @@ const NotFound = () => {
 export default NotFound;
 
 
-Spinners.js
-..............................................
+**Spinners.js**
+```
+```
 import React, { Fragment } from 'react';
 import spinner from './spinner.gif';
 
@@ -2367,8 +2388,9 @@ export default () => (
 );
 
 
-CommentForm.js
-...........................
+**CommentForm.js**
+```
+```
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -2414,8 +2436,9 @@ export default connect(
   { addComment }
 )(CommentForm);
 
-CommentItem.js
-..............................
+**CommentItem.js**
+```
+```
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -2471,8 +2494,9 @@ export default connect(
 )(CommentItem);
 
 
-Post.js
-..........................................................................
+**Post.js**
+```
+```
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -2520,11 +2544,12 @@ export default connect(mapStateToProps, { getPost })(Post);
 
 
 
-                          POSTS
+                          #POSTS
    -POSTFORM.JS
 
-PostForm.js
-...........................................
+**PostForm.js**
+```
+```
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -2571,10 +2596,11 @@ export default connect(
 )(PostForm);
 
 
-POSTITEM
+#POSTITEM
 
-PostItem.js
-....................................
+**PostItem.js**
+```
+```
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -2663,8 +2689,9 @@ export default connect(
   { addLike, removeLike, deletePost }
 )(PostItem);
 
-Posts.js
-..............................................................
+**Posts.js**
+```
+```
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -2705,8 +2732,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { getPosts })(Posts);
 
 
-AddEducation.js
-.................................................
+**AddEducation.js**
+```
+```
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -2961,8 +2989,9 @@ export default connect(null, { addEducation })(AddEducation);
 
 
 
-AddExperience.js
-........................................................
+**AddExperience.js**
+```
+```
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -3083,8 +3112,9 @@ AddExperience.propTypes = {
 export default connect(null, { addExperience })(AddExperience);
 
 
-ProfileForm.js
-........................................................
+**ProfileForm.js**
+```
+```
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -3345,8 +3375,9 @@ export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
 
 
 
-Profile.js
-....................................
+**Profile.js**
+```
+```
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -3439,8 +3470,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { getProfileById })(Profile);
 
 
-ProfileAbout.js
-............................................
+**ProfileAbout.js**
+```
+```
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
@@ -3477,8 +3509,9 @@ ProfileAbout.propTypes = {
 export default ProfileAbout;
 
 
-ProfileEducation.js
-...................................................................
+**ProfileEducation.js**
+```
+```
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -3512,8 +3545,9 @@ ProfileEducation.propTypes = {
 export default ProfileEducation;
 
 
-ProfileExperience.js
-.................................................
+**ProfileExperience.js**
+```
+```
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -3547,8 +3581,9 @@ ProfileExperience.propTypes = {
 export default ProfileExperience;
 
 
-ProfileGithub.js
-...........................................................
+**ProfileGithub.js**
+```
+```
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -3602,8 +3637,9 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, { getGithubRepos })(ProfileGithub);
 
 
-ProfileTop.js
-................................................
+**ProfileTop.js**
+```
+```
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -3668,9 +3704,10 @@ ProfileTop.propTypes = {
 export default ProfileTop;
 
 
-PROFILES
-ProfileItem.js  Display Profile
-................................
+#PROFILES
+**ProfileItem.js**  Display Profile
+```
+```
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -3715,8 +3752,9 @@ ProfileItem.propTypes = {
 
 export default ProfileItem;
 
-Profile.js         Fixed console warning
-......................................
+**Profile.js**         Fixed console warning
+```
+```
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -3761,8 +3799,9 @@ ProfileItem.propTypes = {
 export default ProfileItem;
 
 
-PrivateRoute.js
-.................................................
+**PrivateRoute.js**
+```
+```
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -3801,10 +3840,11 @@ export default connect(mapStateToProps)(PrivateRoute);
 
 
 
-REDUCERS
+#REDUCERS
 
------Alert.js
-...................................................
+**-----Alert.js**
+```
+```
 import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
 const initialState = [];
@@ -3822,8 +3862,9 @@ export default function(state = initialState, action) {
   }
 }
 
-------------auth.js
-.............................................
+**------------auth.js**
+```
+```
 import {
   REGISTER_SUCCESS,
   //REGISTER_FAIL,
@@ -3891,8 +3932,9 @@ export default function (state = initialState, action) {
 
 
 
-------- index.js
-.................................
+**------- index.js**
+```
+```
 import { combineReducers } from 'redux';
 import alert from './alert';
 import auth from './auth';
@@ -3907,8 +3949,9 @@ export default combineReducers({
 });
 
 
- ------ post.js
-.........................
+** ------ post.js**
+```
+```
 import {
   GET_POSTS,
   POST_ERROR,
@@ -3992,8 +4035,9 @@ export default function(state = initialState, action) {
 }
 
 
------Profile.js
-.................................
+**-----Profile.js**
+```
+```
 import {
   GET_PROFILE,
   PROFILE_ERROR,
@@ -4060,8 +4104,9 @@ export default function (state = initialState, action) {
 
 
 
-api.js
-..............................
+**api.js**
+```
+```
 import axios from 'axios';
 import store from '../store';
 import { LOGOUT } from '../actions/types';
@@ -4093,8 +4138,9 @@ api.interceptors.response.use(
 export default api;
 
 
-setAuthToken.js
-.........................................
+**setAuthToken.js**
+```
+```
 import api from './api';
 
 const setAuthToken = token => {
