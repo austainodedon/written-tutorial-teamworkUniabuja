@@ -24,7 +24,7 @@ The link to my open source code used as basis for this project is https://github
 ## Part 1
 
 **MongoDB Atlas Setup**
-MongoDOB is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
+**MongoDOB** is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
 - Installation of MongoDB
    - There are several ways to locally installed MongoDB or in the cloud using MongoDB Atlas. MongoBD Atlas is preferably used because it's easier to managed.
    - visit the MongoDB website (mongodb.com) and sign up if you don't have an account with them.
@@ -53,11 +53,11 @@ bring up the terminal by pressing Cntrl + `
 
 ```
 node_modules/
-
+```
   - Build our express server in API
 Terminal
-```
 
+```
 - npm init
 - description: Social network for developers in the University of Abuja
 - entry point: (index.jx) server.js
@@ -66,23 +66,23 @@ Terminal
 - keywords:
 - author: Augustine Ekene Emeka
 - license: (ISC) "MIT"
-
+```
    - Install our Dependencies
 at the Terminal run the command
-.................................................
+```
 ```
 npm i express express-validator bcryptjs config gravator jsonwebtoken
 mongoose request
 ```
 
-..................................................
+```
 ```
 npm i -D nodemon concurrently
 ```
 
 We need to have an entry file
    _ Create a new file named server.js
-....................................................
+```
 ```
 const express = require ('express');
 const app = express();
@@ -92,15 +92,16 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 ```
 
 Let's test with...
-.........................
-node server.js
-
+```
+**node server.js**
+```
+```
   -Go to postman to run the server
   -Type http://localhost:5000
 
    -To stop the running server
 Terminal
-..............................
+```
 ```
 git add.
 git commit -m 'initial commit'
@@ -122,7 +123,7 @@ In our default.json
 }
 
     - Under config, create another file called db.js
-.....................................................
+```
 ```
 cont mongoose = require('mongoose');
 config = require('config');
@@ -154,7 +155,7 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
   - let's run it
 Termial
-.......................
+```
 npm run server
 
 
@@ -907,7 +908,7 @@ router.get('/github/:username', async (req, res) => {
 module.exports = router;
 
 
-CREATING THE USER MODEL
+**CREATING THE USER MODEL**
 Create a new folder in the root called models
 Create a new file within the model called User.js
 Create a schema
@@ -944,7 +945,7 @@ module.exports = mongoose.model('user', UserSchema);
 
 
 
-REQUEST AND BODY VALIDATION
+**REQUEST AND BODY VALIDATION**
 Go to users.json file 
 Change the GET request to a Post request
 Go to Postman and change the GET request to POST request
@@ -953,16 +954,16 @@ The content type is equal to application.json
 In the Body, choose raw
 
 
-User Registration
+**User Registration**
 All the codes is embedded in users.js
 
 
-IMPLEMENTING JWT
+**IMPLEMENTING JWT**
 Go to config, default.json to input your secret token code
 Go to MongoDB Atlas and delete the user
 Then to postman and generate a token, copy it and paste it i (jwt.io) to decode the secret token
 
-CUSTOM AUTH MIDDLEWARE & JWT VERIFY
+**CUSTOM AUTH MIDDLEWARE & JWT VERIFY**
 Create a folder in the root called middleware
 Go to postman, create a new tab
 Then GET request ...........http://localhost:5000/api/auth
@@ -1014,7 +1015,8 @@ at the Terminal and at the root directory in order to create the frontend react 
 npx create-react-app client
 ```
 
-Package.json
+**Package.json**
+```
 ```
 {
   "name": "TeamworkUniAbuja",
@@ -1048,34 +1050,34 @@ Package.json
   }
 ```
 to check if it is working, at the Terminal run the command
-----------------
+```
 npm run dev
 
   - Install Devependencies from the client side
 Terminal
------------------------------
+```
 cd client
 npm i axios react-router-dom redux react-redux redux-thunk redux-devtools-extension moment react-moment
 
    - Delete the gitignore foder and README folder under the client folder.
   Terminal
------------------
+```
 cd client
 
 To delete the folder completely
---------------
+```
 rm -rf .git
  Back into the root
------------
+```
 cd ..
 
 
 Add a proxy in the client folder under package.json
 Then go to root and run
---------------
+```
 npm dev
 
-CLEAN UP AND INITIAL COMPONENT
+**CLEAN UP AND INITIAL COMPONENT**
    - In Vscode code, Go to client, in the source folder
    - Delete workerserver.js, logo svg, index.css and app.test.js.
    - Go to app.css and paste app.css code
@@ -1141,8 +1143,9 @@ const App = () => {
 
 export default App;
 
-Index.html
-.............................
+**Index.html**
+```
+```
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1205,7 +1208,7 @@ const App = {} => (
 export default app;
 
 
-CODES IN CLIENT'S FOLDER
+**CODES IN CLIENT'S FOLDER**
 
 **manifest.json**
 ```{
@@ -1225,6 +1228,7 @@ CODES IN CLIENT'S FOLDER
 }
 
 **index.html**
+```
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -1847,6 +1851,7 @@ export default connect(mapStateToProps, { login })(Login);
 
 
 **Register.js**
+```
 ```
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
