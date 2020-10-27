@@ -24,7 +24,7 @@ The link to my open source code used as basis for this project is https://github
 ## Part 1
 
 **MongoDB Atlas Setup**
-MongoDOB is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
+**MongoDOB** is a noSQL database such as structure type and its very similar to JS synthax, a javascript object.
 - Installation of MongoDB
    - There are several ways to locally installed MongoDB or in the cloud using MongoDB Atlas. MongoBD Atlas is preferably used because it's easier to managed.
    - visit the MongoDB website (mongodb.com) and sign up if you don't have an account with them.
@@ -53,11 +53,11 @@ bring up the terminal by pressing Cntrl + `
 
 ```
 node_modules/
-
+```
   - Build our express server in API
 Terminal
-```
 
+```
 - npm init
 - description: Social network for developers in the University of Abuja
 - entry point: (index.jx) server.js
@@ -66,23 +66,23 @@ Terminal
 - keywords:
 - author: Augustine Ekene Emeka
 - license: (ISC) "MIT"
-
+```
    - Install our Dependencies
 at the Terminal run the command
-.................................................
+
 ```
 npm i express express-validator bcryptjs config gravator jsonwebtoken
 mongoose request
 ```
 
-..................................................
+
 ```
 npm i -D nodemon concurrently
 ```
 
-We need to have an entry file
-   _ Create a new file named server.js
-....................................................
+**We need to have an entry file**
+-Create a new file named server.js
+
 ```
 const express = require ('express');
 const app = express();
@@ -91,23 +91,24 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 ```
 
-Let's test with...
-.........................
+Let's test with
+```
 node server.js
+```
 
   -Go to postman to run the server
   -Type http://localhost:5000
 
    -To stop the running server
 Terminal
-..............................
+
 ```
 git add.
 git commit -m 'initial commit'
 ```
 
 
-
+```
 Connecting to MongoDb with Mongoose
 - Login to your MongoDB Atlas
 - Click on connect, connect your application and copy the strings in "connection string only"
@@ -115,14 +116,14 @@ Connecting to MongoDb with Mongoose
 - Create a folder name 'config'
 - In the config, create a file called 'default.json'
 In our default.json
-
+```
 {
   "mongoURI": "paste the string you copied fro MongoDB Atlas website and replace the password with the one you created"
 
 }
 
     - Under config, create another file called db.js
-.....................................................
+
 ```
 cont mongoose = require('mongoose');
 config = require('config');
@@ -154,20 +155,20 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
   - let's run it
 Termial
-.......................
+```
 npm run server
+```
 
-
-
+```
 **ROUTE FILES WITH EXPRESS ROUTER**
 -Create a folder in thr root called Routes
 -create another folder within the routes called Api
 -Within the Api folder, create files called users.js, auth.js, profile.js and post.js
 -Go to the postman to check and run your code
 -Separates your resources within postman by creating a new collections----- user & auth, posts and profiles
+```
+**users.js**
 
-users.js
-....................................
 ```
 const express = require('express');
 const router = express.Router();
@@ -259,8 +260,8 @@ module.exports = router;
 
 
 
-auth.js
-....................................
+**auth.js**
+
 ```
 const express = require('express');
 const router = express.Router();
@@ -344,8 +345,8 @@ router.post(
 module.exports = router;
 ```
 
-posts.js
-......................................
+**posts.js**
+
 ```
 const express = require('express');
 const router = express.Router();
@@ -570,8 +571,9 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 module.exports = router;
 ```
 
-profile.js
-........................
+**profile.js**
+
+```
 const express = require('express');
 const axios = require('axios');
 const config = require('config');
@@ -904,15 +906,17 @@ router.get('/github/:username', async (req, res) => {
 });
 
 module.exports = router;
+```
 
-
-CREATING THE USER MODEL
+**CREATING THE USER MODEL**
+```
 Create a new folder in the root called models
 Create a new file within the model called User.js
 Create a schema
+```
+**User.js**
 
-User.js
-..................................................................................
+```
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -939,37 +943,39 @@ const UserSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('user', UserSchema);
+```
 
 
-
-REQUEST AND BODY VALIDATION
+**REQUEST AND BODY VALIDATION**
+```
 Go to users.json file 
 Change the GET request to a Post request
 Go to Postman and change the GET request to POST request
 Add the content type to the Header
 The content type is equal to application.json
 In the Body, choose raw
+```
 
-
-User Registration
+**User Registration**
 All the codes is embedded in users.js
 
 
-IMPLEMENTING JWT
-Go to config, default.json to input your secret token code
-Go to MongoDB Atlas and delete the user
-Then to postman and generate a token, copy it and paste it i (jwt.io) to decode the secret token
+**IMPLEMENTING JWT**
+- Go to config, default.json to input your secret token code
+- Go to MongoDB Atlas and delete the user
+- Then to postman and generate a token, copy it and paste it i (jwt.io) to decode the secret token
 
-CUSTOM AUTH MIDDLEWARE & JWT VERIFY
-Create a folder in the root called middleware
-Go to postman, create a new tab
-Then GET request ...........http://localhost:5000/api/auth
-Go to Register user and copy your token then back to the local host
-Click on the header and type x-auth.token
-Then paste the token under VALUE
-Then save it under User&auth folder as Get auth user
+**CUSTOM AUTH MIDDLEWARE & JWT VERIFY**
+- Create a folder in the root called middleware
+- Go to postman, create a new tab
+- Then GET request ...........http://localhost:5000/api/auth
+- Go to Register user and copy your token then back to the local host
+- Click on the header and type x-auth.token
+- Then paste the token under VALUE
+- Then save it under User&auth folder as Get auth user
 
-auth.js
+**auth.js**
+
 ```
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -1001,7 +1007,7 @@ module.exports = function (req, res, next) {
 ```
 
 
-								## Part 3
+## Part 3
 
 
 **React and Concurrent Setup**
@@ -1011,7 +1017,8 @@ at the Terminal and at the root directory in order to create the frontend react 
 npx create-react-app client
 ```
 
-Package.json
+**Package.json**
+
 ```
 {
   "name": "TeamworkUniAbuja",
@@ -1045,34 +1052,35 @@ Package.json
   }
 ```
 to check if it is working, at the Terminal run the command
-----------------
+```
 npm run dev
-
+``
   - Install Devependencies from the client side
 Terminal
------------------------------
+```
 cd client
 npm i axios react-router-dom redux react-redux redux-thunk redux-devtools-extension moment react-moment
-
+```
    - Delete the gitignore foder and README folder under the client folder.
   Terminal
------------------
-cd client
+
+- cd client
 
 To delete the folder completely
---------------
+```
 rm -rf .git
- Back into the root
------------
+```
+ - Back into the root
+
 cd ..
 
 
 Add a proxy in the client folder under package.json
 Then go to root and run
---------------
+```
 npm dev
-
-CLEAN UP AND INITIAL COMPONENT
+``
+**CLEAN UP AND INITIAL COMPONENT**
    - In Vscode code, Go to client, in the source folder
    - Delete workerserver.js, logo svg, index.css and app.test.js.
    - Go to app.css and paste app.css code
@@ -1089,8 +1097,9 @@ CLEAN UP AND INITIAL COMPONENT
    - Go to index.html, Copy the section with the class Landing and paste it in landing.js
    
 
-App.js
-............................
+**App.js**
+
+```
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
@@ -1136,9 +1145,10 @@ const App = () => {
 };
 
 export default App;
+```
+**index.html**
 
-Index.html
-.............................
+```
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1160,9 +1170,10 @@ Index.html
     <div id="root"></div>
   </body>
 </html>
+```
+**Navbar.js**
 
-Navbar.js
-........................
+```
 import React from 'react';
 
 const Navbar = () =>
@@ -1181,9 +1192,10 @@ const Navbar = () =>
 }
 
 export default Navbar
+```
+**Landing.js**
 
-Landing.js
-........................
+```
 import React, { Fragment } from 'react';
 import Navbar from './components/layout/Navbar';
 import Landing from './component/layout/landing';
@@ -1197,12 +1209,13 @@ const App = {} => (
 );
 
 export default app;
+```
 
+**CODES IN CLIENT'S FOLDER**
 
-CODES IN CLIENT'S FOLDER
-
-manifest.json
-..........................{
+**manifest.json**
+```
+{
   "short_name": "React App",
   "name": "Create React App Sample",
   "icons": [
@@ -1217,9 +1230,10 @@ manifest.json
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
+```
+**index.html**
 
-index.html
-............................
+```
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1241,9 +1255,10 @@ index.html
     <div id="root"></div>
   </body>
 </html>
+```
+**Alert.js**
 
-Alert.js
-............................
+```
 import { v4 as uuidv4 } from 'uuid';
 import { SET_ALERT, REMOVE_ALERT } from './types';
 
@@ -1256,9 +1271,10 @@ export const setAlert = (msg, alertType, timeout = 5000) => dispatch => {
 
   setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeout);
 };
+```
+**auth.js**
 
-auth.js
-..............................
+```
 import api from '../utils/api';
 import { setAlert } from './alert';
 import {
@@ -1338,10 +1354,11 @@ export const login = (email, password) => async dispatch => {
 
 // Logout
 export const logout = () => ({ type: LOGOUT });
+```
 
+**post.js**
 
-post.js
-...................................
+```
 import api from '../utils/api';
 import { setAlert } from './alert';
 import {
@@ -1498,10 +1515,11 @@ export const deleteComment = (postId, commentId) => async dispatch => {
     });
   }
 };
+```
 
+**profile.js**
 
-profile.js
-..............................
+```
 import api from '../utils/api';
 import { setAlert } from './alert';
 
@@ -1728,10 +1746,11 @@ export const deleteAccount = () => async dispatch => {
     }
   }
 };
+```
 
+**Types.js**
 
-Types.js
-.........................................
+```
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -1757,9 +1776,10 @@ export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+```
+**Login.js**
 
-Login.js
-..................................................
+```
 import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -1832,10 +1852,11 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { login })(Login);
+```
 
+**Register.js**
 
-Register.js
-....................................
+```
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
@@ -1937,9 +1958,10 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { setAlert, register })(Register);
 
+```
+**Dashboard.js**
 
-Dashboard.js
-.....................................
+```
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -2005,9 +2027,10 @@ export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
   Dashboard
 );
 
+```
+**DashboardActions.js**
 
-DashboardActions.js
-..........................
+```
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -2067,10 +2090,11 @@ export default connect(
   { deleteEducation }
 )(Education);
 
+```
 
+**Education.js**
 
-Education.js
-................................
+```
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -2129,10 +2153,11 @@ export default connect(
   null,
   { deleteEducation }
 )(Education);
+```
 
+**Experience.js**
 
-Experience.js
-.....................................
+```
   
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
@@ -2193,9 +2218,10 @@ export default connect(
   { deleteExperience }
 )(Experience);
 
+```
+**Alert.js**
 
-Alert.js
-........................
+```
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -2216,9 +2242,10 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Alert);
+```
+**Landing.js**
 
-Landing.js
-.....................................
+```
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -2262,9 +2289,10 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(Landing);
 
+```
+**Navbar.js**
 
-Navbar.js
-.........................................
+```
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -2332,9 +2360,10 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { logout })(Navbar);
 
+```
+**NotFound.js**
 
-NotFound.js
-.................................
+```
 import React, { Fragment } from 'react';
 
 const NotFound = () => {
@@ -2349,10 +2378,11 @@ const NotFound = () => {
 };
 
 export default NotFound;
+```
 
+**Spinners.js**
 
-Spinners.js
-..............................................
+```
 import React, { Fragment } from 'react';
 import spinner from './spinner.gif';
 
@@ -2365,10 +2395,11 @@ export default () => (
     />
   </Fragment>
 );
+```
 
+**CommentForm.js**
 
-CommentForm.js
-...........................
+```
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -2413,9 +2444,10 @@ export default connect(
   null,
   { addComment }
 )(CommentForm);
+```
+**CommentItem.js**
 
-CommentItem.js
-..............................
+```
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -2470,9 +2502,10 @@ export default connect(
   { deleteComment }
 )(CommentItem);
 
+```
+**Post.js**
 
-Post.js
-..........................................................................
+```
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -2495,6 +2528,1679 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
       <Link to="/posts" className="btn">
         Back To Posts
       </Link>
+      <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._id} />
+      <div className="comments">
+        {post.comments.map((comment) => (
+          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+        ))}
+      </div>
+    </Fragment>
+  );
+};
+
+Post.propTypes = {
+  getPost: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  post: state.post
+});
+
+export default connect(mapStateToProps, { getPost })(Post);
+
+
+
+```
+
+**PostForm.js**
+
+```
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addPost } from '../../actions/post';
+
+const PostForm = ({ addPost }) => {
+  const [text, setText] = useState('');
+
+  return (
+    <div className='post-form'>
+      <div className='bg-primary p'>
+        <h3>Say Something...</h3>
+      </div>
+      <form
+        className='form my-1'
+        onSubmit={e => {
+          e.preventDefault();
+          addPost({ text });
+          setText('');
+        }}
+      >
+        <textarea
+          name='text'
+          cols='30'
+          rows='5'
+          placeholder='Create a post'
+          value={text}
+          onChange={e => setText(e.target.value)}
+          required
+        />
+        <input type='submit' className='btn btn-dark my-1' value='Submit' />
+      </form>
+    </div>
+  );
+};
+
+PostForm.propTypes = {
+  addPost: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addPost }
+)(PostForm);
+```
+
+##POSTITEM
+
+**PostItem.js**
+
+```
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { addLike, removeLike, deletePost } from '../../actions/post';
+
+const PostItem = ({
+  addLike,
+  removeLike,
+  deletePost,
+  auth,
+  post: { _id, text, name, avatar, user, likes, comments, date },
+  showActions
+}) => (
+  <div className='post bg-white p-1 my-1'>
+    <div>
+      <Link to={`/profile/${user}`}>
+        <img className='round-img' src={avatar} alt='' />
+        <h4>{name}</h4>
+      </Link>
+    </div>
+    <div>
+      <p className='my-1'>{text}</p>
+      <p className='post-date'>
+        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+      </p>
+
+      {showActions && (
+        <Fragment>
+          <button
+            onClick={() => addLike(_id)}
+            type='button'
+            className='btn btn-light'
+          >
+            <i className='fas fa-thumbs-up' />{' '}
+            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+          </button>
+          <button
+            onClick={() => removeLike(_id)}
+            type='button'
+            className='btn btn-light'
+          >
+            <i className='fas fa-thumbs-down' />
+          </button>
+          <Link to={`/posts/${_id}`} className='btn btn-primary'>
+            Discussion{' '}
+            {comments.length > 0 && (
+              <span className='comment-count'>{comments.length}</span>
+            )}
+          </Link>
+          {!auth.loading && user === auth.user._id && (
+            <button
+              onClick={() => deletePost(_id)}
+              type='button'
+              className='btn btn-danger'
+            >
+              <i className='fas fa-times' />
+            </button>
+          )}
+        </Fragment>
+      )}
+    </div>
+  </div>
+);
+
+PostItem.defaultProps = {
+  showActions: true
+};
+
+PostItem.propTypes = {
+  post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  showActions: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { addLike, removeLike, deletePost }
+)(PostItem);
+```
+**Posts.js**
+
+```
+import React, { Fragment, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PostItem from './PostItem';
+import PostForm from './PostForm';
+import { getPosts } from '../../actions/post';
+
+const Posts = ({ getPosts, post: { posts } }) => {
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
+
+  return (
+    <Fragment>
+      <h1 className="large text-primary">Posts</h1>
+      <p className="lead">
+        <i className="fas fa-user" /> Welcome to the community
+      </p>
+      <PostForm />
+      <div className="posts">
+        {posts.map((post) => (
+          <PostItem key={post._id} post={post} />
+        ))}
+      </div>
+    </Fragment>
+  );
+};
+
+Posts.propTypes = {
+  getPosts: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  post: state.post
+});
+
+export default connect(mapStateToProps, { getPosts })(Posts);
+```
+
+**AddEducation.js**
+
+```
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addEducation } from '../../actions/profile';
+
+const AddEducation = ({ addEducation, history }) => {
+  const [formData, setFormData] = useState({
+    school: '',
+    degree: '',
+    fieldofstudy: '',
+    from: '',
+    to: '',
+    current: false,
+    description: ''
+  });
+
+  const {
+    school,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    description,
+    current
+  } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  return (
+    <Fragment>
+      <h1 className="large text-primary">Add Your Education</h1>
+      <p className="lead">
+        <i className="fas fa-code-branch" /> Add any school or bootcamp that you
+        have attended
+      </p>
+      <small>* = required field</small>
+      <form
+        className="form"
+        onSubmit={e => {
+          e.preventDefault();
+          addEducation(formData, history);
+        }}
+      >
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* School or Bootcamp"
+            name="school"
+            value={school}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Degree or Certificate"
+            name="degree"
+            value={degree}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Field of Study"
+            name="fieldofstudy"
+            value={fieldofstudy}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <h4>From Date</h4>
+          <input type="date" name="from" value={from} onChange={onChange} />
+        </div>
+        <div className="form-group">
+          <p>
+            <input
+              type="checkbox"
+              name="current"
+              checked={current}
+              value={current}
+              onChange={() => setFormData({ ...formData, current: !current })}
+            />{' '}
+            Current School
+          </p>
+        </div>
+        <div className="form-group">
+          <h4>To Date</h4>
+          <input
+            type="date"
+            name="to"
+            value={to}
+            onChange={onChange}
+            disabled={current}
+          />
+        </div>
+        <div className="form-group">
+          <textarea
+            name="description"
+            cols="30"
+            rows="5"
+            placeholder="Program Description"
+            value={description}
+            onChange={onChange}
+          />
+        </div>
+        <input type="submit" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard">
+          Go Back
+        </Link>
+      </form>
+    </Fragment>
+  );
+};
+
+AddEducation.propTypes = {
+  addEducation: PropTypes.func.isRequired
+};
+
+export default connect(null, { addEducation })(AddEducation);
+
+```
+**Education.js**
+```
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addEducation } from '../../actions/profile';
+
+const AddEducation = ({ addEducation, history }) => {
+  const [formData, setFormData] = useState({
+    school: '',
+    degree: '',
+    fieldofstudy: '',
+    from: '',
+    to: '',
+    current: false,
+    description: ''
+  });
+
+  const {
+    school,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    description,
+    current
+  } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  return (
+    <Fragment>
+      <h1 className="large text-primary">Add Your Education</h1>
+      <p className="lead">
+        <i className="fas fa-code-branch" /> Add any school or bootcamp that you
+        have attended
+      </p>
+      <small>* = required field</small>
+      <form
+        className="form"
+        onSubmit={e => {
+          e.preventDefault();
+          addEducation(formData, history);
+        }}
+      >
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* School or Bootcamp"
+            name="school"
+            value={school}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Degree or Certificate"
+            name="degree"
+            value={degree}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Field of Study"
+            name="fieldofstudy"
+            value={fieldofstudy}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <h4>From Date</h4>
+          <input type="date" name="from" value={from} onChange={onChange} />
+        </div>
+        <div className="form-group">
+          <p>
+            <input
+              type="checkbox"
+              name="current"
+              checked={current}
+              value={current}
+              onChange={() => setFormData({ ...formData, current: !current })}
+            />{' '}
+            Current School
+          </p>
+        </div>
+        <div className="form-group">
+          <h4>To Date</h4>
+          <input
+            type="date"
+            name="to"
+            value={to}
+            onChange={onChange}
+            disabled={current}
+          />
+        </div>
+        <div className="form-group">
+          <textarea
+            name="description"
+            cols="30"
+            rows="5"
+            placeholder="Program Description"
+            value={description}
+            onChange={onChange}
+          />
+        </div>
+        <input type="submit" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard">
+          Go Back
+        </Link>
+      </form>
+    </Fragment>
+  );
+};
+
+AddEducation.propTypes = {
+  addEducation: PropTypes.func.isRequired
+};
+
+export default connect(null, { addEducation })(AddEducation);
+
+```
+
+**AddExperience.js**
+
+```
+import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addExperience } from '../../actions/profile';
+
+const AddExperience = ({ addExperience, history }) => {
+  const [formData, setFormData] = useState({
+    company: '',
+    title: '',
+    location: '',
+    from: '',
+    to: '',
+    current: false,
+    description: ''
+  });
+
+  const { company, title, location, from, to, current, description } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  return (
+    <Fragment>
+      <h1 className="large text-primary">Add An Experience</h1>
+      <p className="lead">
+        <i className="fas fa-code-branch" /> Add any developer/programming
+        positions that you have had in the past
+      </p>
+      <small>* = required field</small>
+      <form
+        className="form"
+        onSubmit={e => {
+          e.preventDefault();
+          addExperience(formData, history);
+        }}
+      >
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Job Title"
+            name="title"
+            value={title}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Company"
+            name="company"
+            value={company}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Location"
+            name="location"
+            value={location}
+            onChange={onChange}
+          />
+        </div>
+        <div className="form-group">
+          <h4>From Date</h4>
+          <input type="date" name="from" value={from} onChange={onChange} />
+        </div>
+        <div className="form-group">
+          <p>
+            <input
+              type="checkbox"
+              name="current"
+              checked={current}
+              value={current}
+              onChange={() => {
+                setFormData({ ...formData, current: !current });
+              }}
+            />{' '}
+            Current Job
+          </p>
+        </div>
+        <div className="form-group">
+          <h4>To Date</h4>
+          <input
+            type="date"
+            name="to"
+            value={to}
+            onChange={onChange}
+            disabled={current}
+          />
+        </div>
+        <div className="form-group">
+          <textarea
+            name="description"
+            cols="30"
+            rows="5"
+            placeholder="Job Description"
+            value={description}
+            onChange={onChange}
+          />
+        </div>
+        <input type="submit" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard">
+          Go Back
+        </Link>
+      </form>
+    </Fragment>
+  );
+};
+
+AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired
+};
+
+export default connect(null, { addExperience })(AddExperience);
+```
+
+**ProfileForm.js**
+
+```
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createProfile, getCurrentProfile } from '../../actions/profile';
+
+const initialState = {
+  company: '',
+  website: '',
+  location: '',
+  status: '',
+  skills: '',
+  githubusername: '',
+  bio: '',
+  twitter: '',
+  facebook: '',
+  linkedin: '',
+  youtube: '',
+  instagram: ''
+};
+
+const ProfileForm = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history
+}) => {
+  const [formData, setFormData] = useState(initialState);
+
+  const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  useEffect(() => {
+    if (!profile) getCurrentProfile();
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      if (Array.isArray(profileData.skills))
+        profileData.skills = profileData.skills.join(', ');
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
+
+  const {
+    company,
+    website,
+    location,
+    status,
+    skills,
+    githubusername,
+    bio,
+    twitter,
+    facebook,
+    linkedin,
+    youtube,
+    instagram
+  } = formData;
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    createProfile(formData, history, profile ? true : false);
+  };
+
+  return (
+    <Fragment>
+      <h1 className="large text-primary">Edit Your Profile</h1>
+      <p className="lead">
+        <i className="fas fa-user" /> Add some changes to your profile
+      </p>
+      <small>* = required field</small>
+      <form className="form" onSubmit={onSubmit}>
+        <div className="form-group">
+          <select name="status" value={status} onChange={onChange}>
+            <option>* Select Professional Status</option>
+            <option value="Developer">Developer</option>
+            <option value="Junior Developer">Junior Developer</option>
+            <option value="Senior Developer">Senior Developer</option>
+            <option value="Manager">Manager</option>
+            <option value="Student or Learning">Student or Learning</option>
+            <option value="Instructor">Instructor or Teacher</option>
+            <option value="Intern">Intern</option>
+            <option value="Other">Other</option>
+          </select>
+          <small className="form-text">
+            Give us an idea of where you are at in your career
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Company"
+            name="company"
+            value={company}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Could be your own company or one you work for
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Website"
+            name="website"
+            value={website}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Could be your own or a company website
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Location"
+            name="location"
+            value={location}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            City & state suggested (eg. Boston, MA)
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Skills"
+            name="skills"
+            value={skills}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Github Username"
+            name="githubusername"
+            value={githubusername}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            If you want your latest repos and a Github link, include your
+            username
+          </small>
+        </div>
+        <div className="form-group">
+          <textarea
+            placeholder="A short bio of yourself"
+            name="bio"
+            value={bio}
+            onChange={onChange}
+          />
+          <small className="form-text">Tell us a little about yourself</small>
+        </div>
+
+        <div className="my-2">
+          <button
+            onClick={() => toggleSocialInputs(!displaySocialInputs)}
+            type="button"
+            className="btn btn-light"
+          >
+            Add Social Network Links
+          </button>
+          <span>Optional</span>
+        </div>
+
+        {displaySocialInputs && (
+          <Fragment>
+            <div className="form-group social-input">
+              <i className="fab fa-twitter fa-2x" />
+              <input
+                type="text"
+                placeholder="Twitter URL"
+                name="twitter"
+                value={twitter}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group social-input">
+              <i className="fab fa-facebook fa-2x" />
+              <input
+                type="text"
+                placeholder="Facebook URL"
+                name="facebook"
+                value={facebook}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group social-input">
+              <i className="fab fa-youtube fa-2x" />
+              <input
+                type="text"
+                placeholder="YouTube URL"
+                name="youtube"
+                value={youtube}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group social-input">
+              <i className="fab fa-linkedin fa-2x" />
+              <input
+                type="text"
+                placeholder="Linkedin URL"
+                name="linkedin"
+                value={linkedin}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group social-input">
+              <i className="fab fa-instagram fa-2x" />
+              <input
+                type="text"
+                placeholder="Instagram URL"
+                name="instagram"
+                value={instagram}
+                onChange={onChange}
+              />
+            </div>
+          </Fragment>
+        )}
+
+        <input type="submit" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard">
+          Go Back
+        </Link>
+      </form>
+    </Fragment>
+  );
+};
+
+ProfileForm.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  ProfileForm
+);
+
+
+```
+**Profile.js**
+
+```
+import React, { Fragment, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
+import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
+import ProfileExperience from './ProfileExperience';
+import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
+import { getProfileById } from '../../actions/profile';
+
+const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
+  useEffect(() => {
+    getProfileById(match.params.id);
+  }, [getProfileById, match.params.id]);
+
+  return (
+    <Fragment>
+      {profile === null ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          <Link to="/profiles" className="btn btn-light">
+            Back To Profiles
+          </Link>
+          {auth.isAuthenticated &&
+            auth.loading === false &&
+            auth.user._id === profile.user._id && (
+              <Link to="/edit-profile" className="btn btn-dark">
+                Edit Profile
+              </Link>
+            )}
+          <div className="profile-grid my-1">
+            <ProfileTop profile={profile} />
+            <ProfileAbout profile={profile} />
+            <div className="profile-exp bg-white p-2">
+              <h2 className="text-primary">Experience</h2>
+              {profile.experience.length > 0 ? (
+                <Fragment>
+                  {profile.experience.map((experience) => (
+                    <ProfileExperience
+                      key={experience._id}
+                      experience={experience}
+                    />
+                  ))}
+                </Fragment>
+              ) : (
+                <h4>No experience credentials</h4>
+              )}
+            </div>
+
+            <div className="profile-edu bg-white p-2">
+              <h2 className="text-primary">Education</h2>
+              {profile.education.length > 0 ? (
+                <Fragment>
+                  {profile.education.map((education) => (
+                    <ProfileEducation
+                      key={education._id}
+                      education={education}
+                    />
+                  ))}
+                </Fragment>
+              ) : (
+                <h4>No education credentials</h4>
+              )}
+            </div>
+
+            {profile.githubusername && (
+              <ProfileGithub username={profile.githubusername} />
+            )}
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
+};
+
+Profile.propTypes = {
+  getProfileById: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { getProfileById })(Profile);
+```
+
+**ProfileAbout.js**
+
+```
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+const ProfileAbout = ({
+  profile: {
+    bio,
+    skills,
+    user: { name }
+  }
+}) => (
+  <div className='profile-about bg-light p-2'>
+    {bio && (
+      <Fragment>
+        <h2 className='text-primary'>{name.trim().split(' ')[0]}s Bio</h2>
+        <p>{bio}</p>
+        <div className='line' />
+      </Fragment>
+    )}
+    <h2 className='text-primary'>Skill Set</h2>
+    <div className='skills'>
+      {skills.map((skill, index) => (
+        <div key={index} className='p-1'>
+          <i className='fas fa-check' /> {skill}
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+ProfileAbout.propTypes = {
+  profile: PropTypes.object.isRequired
+};
+
+export default ProfileAbout;
+
+```
+**ProfileEducation.js**
+
+```
+import React from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import moment from 'moment';
+
+const ProfileEducation = ({
+  education: { school, degree, fieldofstudy, current, to, from, description }
+}) => (
+  <div>
+    <h3 className="text-dark">{school}</h3>
+    <p>
+      <Moment format="YYYY/MM/DD">{moment.utc(from)}</Moment> -{' '}
+      {!to ? ' Now' : <Moment format="YYYY/MM/DD">{moment.utc(to)}</Moment>}
+    </p>
+    <p>
+      <strong>Degree: </strong> {degree}
+    </p>
+    <p>
+      <strong>Field Of Study: </strong> {fieldofstudy}
+    </p>
+    <p>
+      <strong>Description: </strong> {description}
+    </p>
+  </div>
+);
+
+ProfileEducation.propTypes = {
+  education: PropTypes.object.isRequired
+};
+
+export default ProfileEducation;
+
+```
+**ProfileExperience.js**
+
+```
+import React from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import moment from 'moment';
+
+const ProfileExperience = ({
+  experience: { company, title, location, current, to, from, description }
+}) => (
+  <div>
+    <h3 className="text-dark">{company}</h3>
+    <p>
+      <Moment format="YYYY/MM/DD">{moment.utc(from)}</Moment> -{' '}
+      {!to ? ' Now' : <Moment format="YYYY/MM/DD">{moment.utc(to)}</Moment>}
+    </p>
+    <p>
+      <strong>Position: </strong> {title}
+    </p>
+    <p>
+      <strong>Location: </strong> {location}
+    </p>
+    <p>
+      <strong>Description: </strong> {description}
+    </p>
+  </div>
+);
+
+ProfileExperience.propTypes = {
+  experience: PropTypes.object.isRequired
+};
+
+export default ProfileExperience;
+```
+
+**ProfileGithub.js**
+
+```
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getGithubRepos } from '../../actions/profile';
+
+const ProfileGithub = ({ username, getGithubRepos, repos }) => {
+  useEffect(() => {
+    getGithubRepos(username);
+  }, [getGithubRepos, username]);
+
+  return (
+    <div className="profile-github">
+      <h2 className="text-primary my-1">Github Repos</h2>
+      {repos.map(repo => (
+        <div key={repo.id} className="repo bg-white p-1 my-1">
+          <div>
+            <h4>
+              <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                {repo.name}
+              </a>
+            </h4>
+            <p>{repo.description}</p>
+          </div>
+          <div>
+            <ul>
+              <li className="badge badge-primary">
+                Stars: {repo.stargazers_count}
+              </li>
+              <li className="badge badge-dark">
+                Watchers: {repo.watchers_count}
+              </li>
+              <li className="badge badge-light">Forks: {repo.forks_count}</li>
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+ProfileGithub.propTypes = {
+  getGithubRepos: PropTypes.func.isRequired,
+  repos: PropTypes.array.isRequired,
+  username: PropTypes.string.isRequired
+};
+
+const mapStateToProps = state => ({
+  repos: state.profile.repos
+});
+
+export default connect(mapStateToProps, { getGithubRepos })(ProfileGithub);
+```
+
+**ProfileTop.js**
+
+```
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const ProfileTop = ({
+  profile: {
+    status,
+    company,
+    location,
+    website,
+    social,
+    user: { name, avatar }
+  }
+}) => {
+  return (
+    <div className='profile-top bg-primary p-2'>
+      <img className='round-img my-1' src={avatar} alt='' />
+      <h1 className='large'>{name}</h1>
+      <p className='lead'>
+        {status} {company && <span> at {company}</span>}
+      </p>
+      <p>{location && <span>{location}</span>}</p>
+      <div className='icons my-1'>
+        {website && (
+          <a href={website} target='_blank' rel='noopener noreferrer'>
+            <i className='fas fa-globe fa-2x' />
+          </a>
+        )}
+        {social && social.twitter && (
+          <a href={social.twitter} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-twitter fa-2x' />
+          </a>
+        )}
+        {social && social.facebook && (
+          <a href={social.facebook} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-facebook fa-2x' />
+          </a>
+        )}
+        {social && social.linkedin && (
+          <a href={social.linkedin} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-linkedin fa-2x' />
+          </a>
+        )}
+        {social && social.youtube && (
+          <a href={social.youtube} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-youtube fa-2x' />
+          </a>
+        )}
+        {social && social.instagram && (
+          <a href={social.instagram} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-instagram fa-2x' />
+          </a>
+        )}
+      </div>
+    </div>
+  );
+};
+
+ProfileTop.propTypes = {
+  profile: PropTypes.object.isRequired
+};
+
+export default ProfileTop;
+```
+
+##PROFILES
+**ProfileItem.js**  Display Profile
+
+```
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+const ProfileItem = ({
+  profile: {
+    user: { _id, name, avatar },
+    status,
+    company,
+    location,
+    skills
+  }
+}) => {
+  return (
+    <div className='profile bg-light'>
+      <img src={avatar} alt='' className='round-img' />
+      <div>
+        <h2>{name}</h2>
+        <p>
+          {status} {company && <span> at {company}</span>}
+        </p>
+        <p className='my-1'>{location && <span>{location}</span>}</p>
+        <Link to={`/profile/${_id}`} className='btn btn-primary'>
+          View Profile
+        </Link>
+      </div>
+      <ul>
+        {skills.slice(0, 4).map((skill, index) => (
+          <li key={index} className='text-primary'>
+            <i className='fas fa-check' /> {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+ProfileItem.propTypes = {
+  profile: PropTypes.object.isRequired
+};
+
+export default ProfileItem;
+```
+**Profile.js**         
+Fixed console warning
+
+```
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+const ProfileItem = ({
+  profile: {
+    user: { _id, name, avatar },
+    status,
+    company,
+    location,
+    skills
+  }
+}) => {
+  return (
+    <div className='profile bg-light'>
+      <img src={avatar} alt='' className='round-img' />
+      <div>
+        <h2>{name}</h2>
+        <p>
+          {status} {company && <span> at {company}</span>}
+        </p>
+        <p className='my-1'>{location && <span>{location}</span>}</p>
+        <Link to={`/profile/${_id}`} className='btn btn-primary'>
+          View Profile
+        </Link>
+      </div>
+      <ul>
+        {skills.slice(0, 4).map((skill, index) => (
+          <li key={index} className='text-primary'>
+            <i className='fas fa-check' /> {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+ProfileItem.propTypes = {
+  profile: PropTypes.object.isRequired
+};
+
+export default ProfileItem;
+```
+
+**PrivateRoute.js**
+
+```
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Spinner from '../layout/Spinner';
+
+const PrivateRoute = ({
+  component: Component,
+  auth: { isAuthenticated, loading },
+  ...rest
+}) => (
+  <Route
+    {...rest}
+    render={props =>
+      loading ? (
+        <Spinner />
+      ) : isAuthenticated ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/login" />
+      )
+    }
+  />
+);
+
+PrivateRoute.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(PrivateRoute);
+
+```
+
+
+##REDUCERS
+
+**Alert.js**
+
+```
+import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
+
+const initialState = [];
+
+export default function(state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case SET_ALERT:
+      return [...state, payload];
+    case REMOVE_ALERT:
+      return state.filter(alert => alert.id !== payload);
+    default:
+      return state;
+  }
+}
+```
+**auth.js**
+
+```
+import {
+  REGISTER_SUCCESS,
+  //REGISTER_FAIL,
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  //LOGIN_FAIL,
+  LOGOUT,
+  ACCOUNT_DELETED
+} from '../actions/types';
+
+const initialState = {
+  token: localStorage.getItem('token'),
+  isAuthenticated: null,
+  loading: true,
+  user: null
+};
+
+export default function (state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: true,
+        loading: false
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: true,
+        loading: false
+      };
+    case ACCOUNT_DELETED:
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null
+      };
+    case AUTH_ERROR:
+    case LOGOUT:
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null
+      };
+    default:
+      return state;
+  }
+}
+
+
+```
+**index.js**
+
+```
+import { combineReducers } from 'redux';
+import alert from './alert';
+import auth from './auth';
+import profile from './profile';
+import post from './post';
+
+export default combineReducers({
+  alert,
+  auth,
+  profile,
+  post
+});
+
+```
+**post.js**
+
+```
+import {
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKES,
+  DELETE_POST,
+  ADD_POST,
+  GET_POST,
+  ADD_COMMENT,
+  REMOVE_COMMENT
+} from '../actions/types';
+
+const initialState = {
+  posts: [],
+  post: null,
+  loading: true,
+  error: {}
+};
+
+export default function(state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case GET_POSTS:
+      return {
+        ...state,
+        posts: payload,
+        loading: false
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: payload,
+        loading: false
+      };
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [payload, ...state.posts],
+        loading: false
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id !== payload),
+        loading: false
+      };
+    case POST_ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false
+      };
+    case UPDATE_LIKES:
+      return {
+        ...state,
+        posts: state.posts.map(post =>
+          post._id === payload.id ? { ...post, likes: payload.likes } : post
+        ),
+        loading: false
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+        loading: false
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            comment => comment._id !== payload
+          )
+        },
+        loading: false
+      };
+    default:
+      return state;
+  }
+}
+```
+
+**Profile.js**
+
+```
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  CLEAR_PROFILE,
+  UPDATE_PROFILE,
+  GET_PROFILES,
+  GET_REPOS,
+  NO_REPOS
+} from '../actions/types';
+
+const initialState = {
+  profile: null,
+  profiles: [],
+  repos: [],
+  loading: true,
+  error: {}
+};
+
+export default function (state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case GET_PROFILE:
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        profile: payload,
+        loading: false
+      };
+    case GET_PROFILES:
+      return {
+        ...state,
+        profiles: payload,
+        loading: false
+      };
+    case PROFILE_ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+        profile: null
+      };
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        repos: []
+      };
+    case GET_REPOS:
+      return {
+        ...state,
+        repos: payload,
+        loading: false
+      };
+    case NO_REPOS:
+      return {
+        ...state,
+        repos: []
+      };
+    default:
+      return state;
+  }
+}
+
+```
+
+**api.js**
+
+```
+import axios from 'axios';
+import store from '../store';
+import { LOGOUT } from '../actions/types';
+
+const api = axios.create({
+  baseURL: '/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+/**
+ intercept any error responses from the api
+ and check if the token is no longer valid.
+ ie. Token has expired or user is no longer
+ authenticated.
+ logout the user if the token has expired
+**/
+
+api.interceptors.response.use(
+  res => res,
+  err => {
+    if (err.response.status === 401) {
+      store.dispatch({ type: LOGOUT });
+    }
+    return Promise.reject(err);
+  }
+);
+
+export default api;
+```
+
+**setAuthToken.js**
+
+```
+import api from './api';
+
+const setAuthToken = token => {
+  if (token) {
+    api.defaults.headers.common['x-auth-token'] = token;
+    localStorage.setItem('token', token);
+  } else {
+    delete api.defaults.headers.common['x-auth-token'];
+    localStorage.removeItem('token');
+  }
+};
+
+export default setAuthToken;
+```
+
+## Part 4
+
+**Deploy to heroku**
+
+- In case you don’t have a Heroku account already, create one.
+- Again, if you don’t have this already, install heroku-cli.
+- Go to your terminal, and log in to Heroku by running heroku login and entering your credentials when prompted.
+- Create your Heroku application by running the following command in the terminal (and, of course, replacing my-app with the name of your own app).
+```
+heroku create my-app
+```
+- At this point, you should have two Git remotes for your app: the original one and the one that was created by Heroku. In order to check this, just run git remote.
+- When Heroku starts your application, it is going to try to run the start script in your package.json. Therefore, this script should be changed to:
+```
+"start": "node server/server.js"
+```
+- Push your code to the Heroku remote repository.
+```
+git push heroku master
+```
+- And that’s it! Your React app should now be deployed to Heroku!
+- You can open it directly from the terminal by running heroku open.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Link>
       <PostItem post={post} showActions={false} />
       <CommentForm postId={post._id} />
       <div className="comments">
@@ -3181,958 +4887,4 @@ const ProfileForm = ({
         </div>
         <div className="form-group">
           <input
-            type="text"
-            placeholder="Company"
-            name="company"
-            value={company}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Could be your own company or one you work for
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Website"
-            name="website"
-            value={website}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Could be your own or a company website
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Location"
-            name="location"
-            value={location}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            City & state suggested (eg. Boston, MA)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
-          </small>
-        </div>
-        <div className="form-group">
-          <textarea
-            placeholder="A short bio of yourself"
-            name="bio"
-            value={bio}
-            onChange={onChange}
-          />
-          <small className="form-text">Tell us a little about yourself</small>
-        </div>
-
-        <div className="my-2">
-          <button
-            onClick={() => toggleSocialInputs(!displaySocialInputs)}
-            type="button"
-            className="btn btn-light"
-          >
-            Add Social Network Links
-          </button>
-          <span>Optional</span>
-        </div>
-
-        {displaySocialInputs && (
-          <Fragment>
-            <div className="form-group social-input">
-              <i className="fab fa-twitter fa-2x" />
-              <input
-                type="text"
-                placeholder="Twitter URL"
-                name="twitter"
-                value={twitter}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-facebook fa-2x" />
-              <input
-                type="text"
-                placeholder="Facebook URL"
-                name="facebook"
-                value={facebook}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-youtube fa-2x" />
-              <input
-                type="text"
-                placeholder="YouTube URL"
-                name="youtube"
-                value={youtube}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-linkedin fa-2x" />
-              <input
-                type="text"
-                placeholder="Linkedin URL"
-                name="linkedin"
-                value={linkedin}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-instagram fa-2x" />
-              <input
-                type="text"
-                placeholder="Instagram URL"
-                name="instagram"
-                value={instagram}
-                onChange={onChange}
-              />
-            </div>
-          </Fragment>
-        )}
-
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
-          Go Back
-        </Link>
-      </form>
-    </Fragment>
-  );
-};
-
-ProfileForm.propTypes = {
-  createProfile: PropTypes.func.isRequired,
-  getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  profile: state.profile
-});
-
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
-  ProfileForm
-);
-
-
-
-Profile.js
-....................................
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
-import ProfileTop from './ProfileTop';
-import ProfileAbout from './ProfileAbout';
-import ProfileExperience from './ProfileExperience';
-import ProfileEducation from './ProfileEducation';
-import ProfileGithub from './ProfileGithub';
-import { getProfileById } from '../../actions/profile';
-
-const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
-  useEffect(() => {
-    getProfileById(match.params.id);
-  }, [getProfileById, match.params.id]);
-
-  return (
-    <Fragment>
-      {profile === null ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
-          </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn btn-dark">
-                Edit Profile
-              </Link>
-            )}
-          <div className="profile-grid my-1">
-            <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
-            <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Experience</h2>
-              {profile.experience.length > 0 ? (
-                <Fragment>
-                  {profile.experience.map((experience) => (
-                    <ProfileExperience
-                      key={experience._id}
-                      experience={experience}
-                    />
-                  ))}
-                </Fragment>
-              ) : (
-                <h4>No experience credentials</h4>
-              )}
-            </div>
-
-            <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Education</h2>
-              {profile.education.length > 0 ? (
-                <Fragment>
-                  {profile.education.map((education) => (
-                    <ProfileEducation
-                      key={education._id}
-                      education={education}
-                    />
-                  ))}
-                </Fragment>
-              ) : (
-                <h4>No education credentials</h4>
-              )}
-            </div>
-
-            {profile.githubusername && (
-              <ProfileGithub username={profile.githubusername} />
-            )}
-          </div>
-        </Fragment>
-      )}
-    </Fragment>
-  );
-};
-
-Profile.propTypes = {
-  getProfileById: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  profile: state.profile,
-  auth: state.auth
-});
-
-export default connect(mapStateToProps, { getProfileById })(Profile);
-
-
-ProfileAbout.js
-............................................
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-
-const ProfileAbout = ({
-  profile: {
-    bio,
-    skills,
-    user: { name }
-  }
-}) => (
-  <div className='profile-about bg-light p-2'>
-    {bio && (
-      <Fragment>
-        <h2 className='text-primary'>{name.trim().split(' ')[0]}s Bio</h2>
-        <p>{bio}</p>
-        <div className='line' />
-      </Fragment>
-    )}
-    <h2 className='text-primary'>Skill Set</h2>
-    <div className='skills'>
-      {skills.map((skill, index) => (
-        <div key={index} className='p-1'>
-          <i className='fas fa-check' /> {skill}
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-ProfileAbout.propTypes = {
-  profile: PropTypes.object.isRequired
-};
-
-export default ProfileAbout;
-
-
-ProfileEducation.js
-...................................................................
-import React from 'react';
-import PropTypes from 'prop-types';
-import Moment from 'react-moment';
-import moment from 'moment';
-
-const ProfileEducation = ({
-  education: { school, degree, fieldofstudy, current, to, from, description }
-}) => (
-  <div>
-    <h3 className="text-dark">{school}</h3>
-    <p>
-      <Moment format="YYYY/MM/DD">{moment.utc(from)}</Moment> -{' '}
-      {!to ? ' Now' : <Moment format="YYYY/MM/DD">{moment.utc(to)}</Moment>}
-    </p>
-    <p>
-      <strong>Degree: </strong> {degree}
-    </p>
-    <p>
-      <strong>Field Of Study: </strong> {fieldofstudy}
-    </p>
-    <p>
-      <strong>Description: </strong> {description}
-    </p>
-  </div>
-);
-
-ProfileEducation.propTypes = {
-  education: PropTypes.object.isRequired
-};
-
-export default ProfileEducation;
-
-
-ProfileExperience.js
-.................................................
-import React from 'react';
-import PropTypes from 'prop-types';
-import Moment from 'react-moment';
-import moment from 'moment';
-
-const ProfileExperience = ({
-  experience: { company, title, location, current, to, from, description }
-}) => (
-  <div>
-    <h3 className="text-dark">{company}</h3>
-    <p>
-      <Moment format="YYYY/MM/DD">{moment.utc(from)}</Moment> -{' '}
-      {!to ? ' Now' : <Moment format="YYYY/MM/DD">{moment.utc(to)}</Moment>}
-    </p>
-    <p>
-      <strong>Position: </strong> {title}
-    </p>
-    <p>
-      <strong>Location: </strong> {location}
-    </p>
-    <p>
-      <strong>Description: </strong> {description}
-    </p>
-  </div>
-);
-
-ProfileExperience.propTypes = {
-  experience: PropTypes.object.isRequired
-};
-
-export default ProfileExperience;
-
-
-ProfileGithub.js
-...........................................................
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getGithubRepos } from '../../actions/profile';
-
-const ProfileGithub = ({ username, getGithubRepos, repos }) => {
-  useEffect(() => {
-    getGithubRepos(username);
-  }, [getGithubRepos, username]);
-
-  return (
-    <div className="profile-github">
-      <h2 className="text-primary my-1">Github Repos</h2>
-      {repos.map(repo => (
-        <div key={repo.id} className="repo bg-white p-1 my-1">
-          <div>
-            <h4>
-              <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                {repo.name}
-              </a>
-            </h4>
-            <p>{repo.description}</p>
-          </div>
-          <div>
-            <ul>
-              <li className="badge badge-primary">
-                Stars: {repo.stargazers_count}
-              </li>
-              <li className="badge badge-dark">
-                Watchers: {repo.watchers_count}
-              </li>
-              <li className="badge badge-light">Forks: {repo.forks_count}</li>
-            </ul>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-ProfileGithub.propTypes = {
-  getGithubRepos: PropTypes.func.isRequired,
-  repos: PropTypes.array.isRequired,
-  username: PropTypes.string.isRequired
-};
-
-const mapStateToProps = state => ({
-  repos: state.profile.repos
-});
-
-export default connect(mapStateToProps, { getGithubRepos })(ProfileGithub);
-
-
-ProfileTop.js
-................................................
-import React from 'react';
-import PropTypes from 'prop-types';
-
-const ProfileTop = ({
-  profile: {
-    status,
-    company,
-    location,
-    website,
-    social,
-    user: { name, avatar }
-  }
-}) => {
-  return (
-    <div className='profile-top bg-primary p-2'>
-      <img className='round-img my-1' src={avatar} alt='' />
-      <h1 className='large'>{name}</h1>
-      <p className='lead'>
-        {status} {company && <span> at {company}</span>}
-      </p>
-      <p>{location && <span>{location}</span>}</p>
-      <div className='icons my-1'>
-        {website && (
-          <a href={website} target='_blank' rel='noopener noreferrer'>
-            <i className='fas fa-globe fa-2x' />
-          </a>
-        )}
-        {social && social.twitter && (
-          <a href={social.twitter} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-twitter fa-2x' />
-          </a>
-        )}
-        {social && social.facebook && (
-          <a href={social.facebook} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-facebook fa-2x' />
-          </a>
-        )}
-        {social && social.linkedin && (
-          <a href={social.linkedin} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-linkedin fa-2x' />
-          </a>
-        )}
-        {social && social.youtube && (
-          <a href={social.youtube} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-youtube fa-2x' />
-          </a>
-        )}
-        {social && social.instagram && (
-          <a href={social.instagram} target='_blank' rel='noopener noreferrer'>
-            <i className='fab fa-instagram fa-2x' />
-          </a>
-        )}
-      </div>
-    </div>
-  );
-};
-
-ProfileTop.propTypes = {
-  profile: PropTypes.object.isRequired
-};
-
-export default ProfileTop;
-
-
-PROFILES
-ProfileItem.js  Display Profile
-................................
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-
-const ProfileItem = ({
-  profile: {
-    user: { _id, name, avatar },
-    status,
-    company,
-    location,
-    skills
-  }
-}) => {
-  return (
-    <div className='profile bg-light'>
-      <img src={avatar} alt='' className='round-img' />
-      <div>
-        <h2>{name}</h2>
-        <p>
-          {status} {company && <span> at {company}</span>}
-        </p>
-        <p className='my-1'>{location && <span>{location}</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>
-          View Profile
-        </Link>
-      </div>
-      <ul>
-        {skills.slice(0, 4).map((skill, index) => (
-          <li key={index} className='text-primary'>
-            <i className='fas fa-check' /> {skill}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-ProfileItem.propTypes = {
-  profile: PropTypes.object.isRequired
-};
-
-export default ProfileItem;
-
-Profile.js         Fixed console warning
-......................................
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-
-const ProfileItem = ({
-  profile: {
-    user: { _id, name, avatar },
-    status,
-    company,
-    location,
-    skills
-  }
-}) => {
-  return (
-    <div className='profile bg-light'>
-      <img src={avatar} alt='' className='round-img' />
-      <div>
-        <h2>{name}</h2>
-        <p>
-          {status} {company && <span> at {company}</span>}
-        </p>
-        <p className='my-1'>{location && <span>{location}</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>
-          View Profile
-        </Link>
-      </div>
-      <ul>
-        {skills.slice(0, 4).map((skill, index) => (
-          <li key={index} className='text-primary'>
-            <i className='fas fa-check' /> {skill}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-ProfileItem.propTypes = {
-  profile: PropTypes.object.isRequired
-};
-
-export default ProfileItem;
-
-
-PrivateRoute.js
-.................................................
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
-
-const PrivateRoute = ({
-  component: Component,
-  auth: { isAuthenticated, loading },
-  ...rest
-}) => (
-  <Route
-    {...rest}
-    render={props =>
-      loading ? (
-        <Spinner />
-      ) : isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/login" />
-      )
-    }
-  />
-);
-
-PrivateRoute.propTypes = {
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(mapStateToProps)(PrivateRoute);
-
-
-
-
-REDUCERS
-
------Alert.js
-...................................................
-import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
-
-const initialState = [];
-
-export default function(state = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case SET_ALERT:
-      return [...state, payload];
-    case REMOVE_ALERT:
-      return state.filter(alert => alert.id !== payload);
-    default:
-      return state;
-  }
-}
-
-------------auth.js
-.............................................
-import {
-  REGISTER_SUCCESS,
-  //REGISTER_FAIL,
-  USER_LOADED,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  //LOGIN_FAIL,
-  LOGOUT,
-  ACCOUNT_DELETED
-} from '../actions/types';
-
-const initialState = {
-  token: localStorage.getItem('token'),
-  isAuthenticated: null,
-  loading: true,
-  user: null
-};
-
-export default function (state = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case USER_LOADED:
-      return {
-        ...state,
-        isAuthenticated: true,
-        loading: false,
-        user: payload
-      };
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        ...payload,
-        isAuthenticated: true,
-        loading: false
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        ...payload,
-        isAuthenticated: true,
-        loading: false
-      };
-    case ACCOUNT_DELETED:
-      return {
-        ...state,
-        token: null,
-        isAuthenticated: false,
-        loading: false,
-        user: null
-      };
-    case AUTH_ERROR:
-    case LOGOUT:
-      return {
-        ...state,
-        token: null,
-        isAuthenticated: false,
-        loading: false,
-        user: null
-      };
-    default:
-      return state;
-  }
-}
-
-
-
-------- index.js
-.................................
-import { combineReducers } from 'redux';
-import alert from './alert';
-import auth from './auth';
-import profile from './profile';
-import post from './post';
-
-export default combineReducers({
-  alert,
-  auth,
-  profile,
-  post
-});
-
-
- ------ post.js
-.........................
-import {
-  GET_POSTS,
-  POST_ERROR,
-  UPDATE_LIKES,
-  DELETE_POST,
-  ADD_POST,
-  GET_POST,
-  ADD_COMMENT,
-  REMOVE_COMMENT
-} from '../actions/types';
-
-const initialState = {
-  posts: [],
-  post: null,
-  loading: true,
-  error: {}
-};
-
-export default function(state = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case GET_POSTS:
-      return {
-        ...state,
-        posts: payload,
-        loading: false
-      };
-    case GET_POST:
-      return {
-        ...state,
-        post: payload,
-        loading: false
-      };
-    case ADD_POST:
-      return {
-        ...state,
-        posts: [payload, ...state.posts],
-        loading: false
-      };
-    case DELETE_POST:
-      return {
-        ...state,
-        posts: state.posts.filter(post => post._id !== payload),
-        loading: false
-      };
-    case POST_ERROR:
-      return {
-        ...state,
-        error: payload,
-        loading: false
-      };
-    case UPDATE_LIKES:
-      return {
-        ...state,
-        posts: state.posts.map(post =>
-          post._id === payload.id ? { ...post, likes: payload.likes } : post
-        ),
-        loading: false
-      };
-    case ADD_COMMENT:
-      return {
-        ...state,
-        post: { ...state.post, comments: payload },
-        loading: false
-      };
-    case REMOVE_COMMENT:
-      return {
-        ...state,
-        post: {
-          ...state.post,
-          comments: state.post.comments.filter(
-            comment => comment._id !== payload
-          )
-        },
-        loading: false
-      };
-    default:
-      return state;
-  }
-}
-
-
------Profile.js
-.................................
-import {
-  GET_PROFILE,
-  PROFILE_ERROR,
-  CLEAR_PROFILE,
-  UPDATE_PROFILE,
-  GET_PROFILES,
-  GET_REPOS,
-  NO_REPOS
-} from '../actions/types';
-
-const initialState = {
-  profile: null,
-  profiles: [],
-  repos: [],
-  loading: true,
-  error: {}
-};
-
-export default function (state = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case GET_PROFILE:
-    case UPDATE_PROFILE:
-      return {
-        ...state,
-        profile: payload,
-        loading: false
-      };
-    case GET_PROFILES:
-      return {
-        ...state,
-        profiles: payload,
-        loading: false
-      };
-    case PROFILE_ERROR:
-      return {
-        ...state,
-        error: payload,
-        loading: false,
-        profile: null
-      };
-    case CLEAR_PROFILE:
-      return {
-        ...state,
-        profile: null,
-        repos: []
-      };
-    case GET_REPOS:
-      return {
-        ...state,
-        repos: payload,
-        loading: false
-      };
-    case NO_REPOS:
-      return {
-        ...state,
-        repos: []
-      };
-    default:
-      return state;
-  }
-}
-
-
-
-api.js
-..............................
-import axios from 'axios';
-import store from '../store';
-import { LOGOUT } from '../actions/types';
-
-const api = axios.create({
-  baseURL: '/api',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
-/**
- intercept any error responses from the api
- and check if the token is no longer valid.
- ie. Token has expired or user is no longer
- authenticated.
- logout the user if the token has expired
-**/
-
-api.interceptors.response.use(
-  res => res,
-  err => {
-    if (err.response.status === 401) {
-      store.dispatch({ type: LOGOUT });
-    }
-    return Promise.reject(err);
-  }
-);
-
-export default api;
-
-
-setAuthToken.js
-.........................................
-import api from './api';
-
-const setAuthToken = token => {
-  if (token) {
-    api.defaults.headers.common['x-auth-token'] = token;
-    localStorage.setItem('token', token);
-  } else {
-    delete api.defaults.headers.common['x-auth-token'];
-    localStorage.removeItem('token');
-  }
-};
-
-export default setAuthToken;
-
-
-## Part 4
-
-**Deploy to heroku**
-
-In case you don’t have a Heroku account already, create one.
-Again, if you don’t have this already, install heroku-cli.
-Go to your terminal, and log in to Heroku by running heroku login and entering your credentials when prompted.
-Create your Heroku application by running the following command in the terminal (and, of course, replacing my-app with the name of your own app).
-heroku create my-app
-At this point, you should have two Git remotes for your app: the original one and the one that was created by Heroku. In order to check this, just run git remote.
-When Heroku starts your application, it is going to try to run the start script in your package.json. Therefore, this script should be changed to:
-"start": "node server/server.js"
-Push your code to the Heroku remote repository.
-git push heroku master
-And that’s it! Your React app should now be deployed to Heroku!
-You can open it directly from the terminal by running heroku open.
-
-
-
-
-
-
-
-
-
-
+            type=
